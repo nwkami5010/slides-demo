@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+
+    <link rel="stylesheet" href="./main.js">
+</head>
+<body>
+<div class="window1">
+
+    <div class="imagesCt">
+        <img src="./images/1.png" alt="图片" class="image" width="300" height="200">
+        <img src="./images/2.png" alt="图片" class="image" width="300" height="200">
+        <img src="./images/3.png" alt="图片" class="image" width="300" height="200">
+        <img src="./images/4.png" alt="图片" class="image" width="300" height="200">
+    </div>
+</div>
+
+<script src="./jquery-3.2.1.min.js"></script>
+<script>
+
+    var imageNumber = $(".imagesCt").children().length
+    let n = 1
+
+    setInterval(function(){
+        n = n + 1
+        showImgNumber(getNumber(n, 4))
+        console.log(n)
+    },3000 * n)
+
+
+
+    function getNumber(number, maxLength){
+        var newNumber
+        if(number < maxLength){
+            newNumber = number
+        } else {
+            newNumber = number % maxLength
+            if(newNumber === 0){
+                newNumber = maxLength
+            }
+        }
+        return newNumber
+    }
+
+    function showImgNumber(number){
+        var $nowNode = $(".imagesCt img:nth-child("+number+")")
+        var $otherNode = $nowNode.siblings()
+        var $leftNode = $nowNode.prev()
+
+        if($leftNode[0] === undefined){
+            $leftNode = $(".imagesCt img:nth-child("+imageNumber+")")
+        }
+
+        $nowNode.removeClass("right left").addClass("current")
+        $otherNode.removeClass("current left").addClass("right")
+        $leftNode.removeClass("current right").addClass("left")
+    }
+
+
+</script>
+</body>
+</html>

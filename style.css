@@ -1,0 +1,44 @@
+
+.imagesCt{
+    display: flex;
+    position: relative;
+}
+.window1{
+    width:300px;
+    height:200px;
+    overflow: hidden;
+    margin: 100px auto;
+    outline:1px solid;
+}
+.imagesCt > img{
+    position: absolute;
+    outline: 1px solid black;
+    transition: all 1s;
+    top: 0;
+    left: 0%;
+}
+.imagesCt > img{
+    transform: translateX(100%);
+}
+
+.imagesCt > img:nth-child(1){
+    transform: translateX(0);
+}
+
+.imagesCt > img.current{
+    transform: translateX(0);
+    z-index: 1
+}
+
+.imagesCt > img.right{
+    transform: translateX(100%);
+    z-index: 0
+}
+
+.imagesCt > img.left{
+    transform: translateX(-100%);
+    z-index: 1
+}
+
+
+
